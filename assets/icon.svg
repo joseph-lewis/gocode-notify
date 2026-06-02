@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="GoCode Notify">
+  <!-- Placeholder GoCode Notify mark. Replace with the real GoCode logo (keep this filename). -->
+  <rect width="128" height="128" rx="28" fill="#0B1020"/>
+  <text x="20" y="74" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="40" font-weight="700" fill="#5EE6A8">&gt;_</text>
+  <!-- bell -->
+  <path d="M86 44a14 14 0 0 0-28 0c0 16-6 20-6 24h40c0-4-6-8-6-24z" fill="#FFC857"/>
+  <circle cx="72" cy="92" r="6" fill="#FFC857"/>
+</svg>

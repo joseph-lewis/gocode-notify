@@ -1,0 +1,61 @@
+{
+  "name": "@gocode/notify",
+  "version": "0.1.0",
+  "description": "Free phone notifications for any coding agent (Cursor, Claude Code, OpenCode, Ralph/Homer) via the GoCode app. One npx command installs the hooks + MCP server.",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://github.com/joseph-lewis/gocode-notify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseph-lewis/gocode-notify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joseph-lewis/gocode-notify/issues"
+  },
+  "author": "GoCode",
+  "bin": {
+    "gocode-notify": "dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "snippets",
+    "assets",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "pretest": "tsc -p tsconfig.json",
+    "test": "node --test \"dist/test/**/*.test.js\"",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "notifications",
+    "push",
+    "push-notifications",
+    "fcm",
+    "mcp",
+    "model-context-protocol",
+    "cli",
+    "claude-code",
+    "cursor",
+    "cursor-ide",
+    "hooks",
+    "ai-coding",
+    "opencode",
+    "ralph",
+    "gocode"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}
