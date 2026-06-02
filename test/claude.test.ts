@@ -77,7 +77,7 @@ test("fresh install writes all three hooks, the MCP entry, and the skill", async
   }
   assert.deepEqual(s.mcpServers[MCP_SERVER_NAME], {
     command: "npx",
-    args: ["-y", "@gocode/notify", "mcp"],
+    args: ["-y", "@trygocode/notify", "mcp"],
   });
 
   const skill = await fs.readFile(claudeSkillPath(home), "utf8");

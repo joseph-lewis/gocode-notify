@@ -7,7 +7,7 @@
 # or your own driver) to get a phone push when the loop finishes or halts.
 #
 # Prereq: you've already paired this machine once with
-#   npx @gocode/notify@latest login --code <CODE>
+#   npx @trygocode/notify@latest login --code <CODE>
 # (get <CODE> from the GoCode app → "Connect a coding agent").
 #
 # Both lines are fire-and-forget: the `|| true` guarantees a failed/slow push

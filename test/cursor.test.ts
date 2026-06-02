@@ -79,7 +79,7 @@ test("fresh install writes the stop hook, the MCP entry, and the rule", async ()
   const mcp = await readJson(cursorMcpPath(home));
   assert.deepEqual(mcp.mcpServers[MCP_SERVER_NAME], {
     command: "npx",
-    args: ["-y", "@gocode/notify", "mcp"],
+    args: ["-y", "@trygocode/notify", "mcp"],
   });
 
   const rule = await fs.readFile(cursorRulePath(home), "utf8");

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `@gocode/notify` are documented here. This project
+All notable changes to `@trygocode/notify` are documented here. This project
 follows [Semantic Versioning](https://semver.org).
 
 ## [0.1.0] — 2026-06-03
@@ -8,7 +8,7 @@ follows [Semantic Versioning](https://semver.org).
 Initial public release.
 
 ### Added
-- **One-command install** — `npx @gocode/notify@latest setup` pairs the machine,
+- **One-command install** — `npx @trygocode/notify@latest setup` pairs the machine,
   auto-detects your agent runtimes, and merges hooks + the MCP server + an
   anti-double-ping rule into each (Cursor, Claude Code, OpenCode). Idempotent;
   safe to re-run; `--force` re-pairs.

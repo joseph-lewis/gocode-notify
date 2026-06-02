@@ -8,7 +8,7 @@
 //      NEVER blocks the agent's turn (PRD §4.4, §5.4). The file's `version` is
 //      preserved (or set to 1 when creating it fresh).
 //   2. MERGE an `mcpServers` entry into `~/.cursor/mcp.json` pointing at
-//      `npx -y @gocode/notify mcp`.
+//      `npx -y @trygocode/notify mcp`.
 //   3. WRITE the on-demand rule to `~/.cursor/rules/gocode-notify.md` (the
 //      anti-double-ping rule, PRD §5.5, `alwaysApply: false`).
 //
@@ -43,7 +43,7 @@ export const MCP_SERVER_NAME = "gocode-notify";
 /** The MCP server entry we register (PRD §4.3, §5.4 invocation form). */
 export const MCP_SERVER_ENTRY = {
   command: "npx",
-  args: ["-y", "@gocode/notify", "mcp"],
+  args: ["-y", "@trygocode/notify", "mcp"],
 } as const;
 
 /**

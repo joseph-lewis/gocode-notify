@@ -61,7 +61,7 @@ done". Then call it once, at that moment, with a clear \`title\`/\`body\`.
 ## If it fails
 
 If \`gocode_notify_status\` reports no credentials, tell the user to run
-\`npx @gocode/notify login\` and pair from the GoCode app's "Connect a coding
+\`npx @trygocode/notify login\` and pair from the GoCode app's "Connect a coding
 agent" screen. Do not retry more than twice.
 `;
 }

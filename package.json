@@ -1,5 +1,5 @@
 {
-  "name": "@gocode/notify",
+  "name": "@trygocode/notify",
   "version": "0.1.0",
   "description": "Free phone notifications for any coding agent (Cursor, Claude Code, OpenCode, Ralph/Homer) via the GoCode app. One npx command installs the hooks + MCP server.",
   "license": "MIT",

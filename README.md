@@ -2,7 +2,7 @@
   <img src="assets/icon.svg" alt="GoCode Notify" width="96" height="96" />
 </p>
 
-<h1 align="center">@gocode/notify</h1>
+<h1 align="center">@trygocode/notify</h1>
 
 <p align="center">
   <strong>Get a push notification on your phone the moment your AI coding agent finishes.</strong><br/>
@@ -10,14 +10,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@gocode/notify"><img alt="npm" src="https://img.shields.io/npm/v/@gocode/notify?color=5EE6A8&label=npm"></a>
+  <a href="https://www.npmjs.com/package/@trygocode/notify"><img alt="npm" src="https://img.shields.io/npm/v/@trygocode/notify?color=5EE6A8&label=npm"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
   <img alt="node" src="https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white">
   <img alt="works with" src="https://img.shields.io/badge/works%20with-Cursor%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-111">
 </p>
 
 ```bash
-npx @gocode/notify@latest setup
+npx @trygocode/notify@latest setup
 ```
 
 <p align="center">
@@ -34,11 +34,11 @@ context-switch to something else. Now you're stuck in the loop of *checking back
 every 30 seconds* to see if it's done — or worse, it finished 20 minutes ago and
 you didn't notice.
 
-**`@gocode/notify` pings your phone the instant your agent finishes a turn, goes
+**`@trygocode/notify` pings your phone the instant your agent finishes a turn, goes
 idle waiting for you, errors out, or an overnight loop completes/halts.** Walk
 away. Your phone tells you when it needs you.
 
-- ⚡ **One command.** `npx @gocode/notify@latest setup` — no server to host, no config files to hand-edit.
+- ⚡ **One command.** `npx @trygocode/notify@latest setup` — no server to host, no config files to hand-edit.
 - 🔒 **Push-only & private.** The paired key can *only* send notifications to your phone. It can't read your chats, code, or settings. Revoke it any time.
 - 🧩 **Auto-detects your tools.** Wires up Cursor, Claude Code, and OpenCode in one go — never clobbering your existing hooks/MCP config.
 - 🪶 **Never blocks your agent.** Every send is fire-and-forget with a hard timeout + an offline queue. A slow push can't slow your work.
@@ -75,7 +75,7 @@ settings; safe to re-run).
 ### Path 1 — paste a one-liner into your terminal
 
 ```bash
-npx @gocode/notify@latest setup
+npx @trygocode/notify@latest setup
 ```
 
 This runs the interactive installer: it prompts for the 6-digit pairing code
@@ -95,9 +95,9 @@ step so the agent can verify each one:
 
 ```
 Install GoCode phone notifications for this machine. Run:
-  npx @gocode/notify@latest setup --agent-driven --pair-code <CODE>
+  npx @trygocode/notify@latest setup --agent-driven --pair-code <CODE>
 Then confirm the hooks and MCP server were written, and run
-  npx @gocode/notify@latest test
+  npx @trygocode/notify@latest test
 to send a test push to my phone. Report whether the test push arrived.
 ```
 
@@ -114,17 +114,17 @@ agent action, and you can revoke it from the app at any time.
 
 1. **In the GoCode app**, open **Settings → "Connect a coding agent"**. The app
    shows a large 6-digit code (valid 10 minutes), a copyable
-   `npx @gocode/notify login --code 123456` line, and a 10:00 countdown. Tap
+   `npx @trygocode/notify login --code 123456` line, and a 10:00 countdown. Tap
    **"Generate new code"** if it expires.
-2. **On the machine**, either run the full installer (`npx @gocode/notify@latest
+2. **On the machine**, either run the full installer (`npx @trygocode/notify@latest
    setup`, which pairs *and* writes your agent configs) or just pair on its own:
 
    ```bash
    # Interactive — prompts for the code:
-   npx @gocode/notify@latest login
+   npx @trygocode/notify@latest login
 
    # Or pass it directly (and optionally label this machine):
-   npx @gocode/notify@latest login --code 123456 --label "MacBook Pro — Cursor"
+   npx @trygocode/notify@latest login --code 123456 --label "MacBook Pro — Cursor"
    ```
 3. The CLI calls the server's `pair/claim` endpoint, receives the API key **once**,
    and writes it to `~/.gocode/credentials` (chmod `600`). The app flips to a
@@ -132,7 +132,7 @@ agent action, and you can revoke it from the app at any time.
 4. **Verify the round-trip** with a real push to your phone:
 
    ```bash
-   npx @gocode/notify@latest test
+   npx @trygocode/notify@latest test
    ```
 
    A "GoCode test" notification should arrive on your paired device. If it
@@ -198,7 +198,7 @@ been written. Most issues below are diagnosable from that output.
 | **Double pings** (two notifications per event) | The agent is calling the `gocode_notify` MCP tool *and* the runtime hook is firing. Re-run `setup` so the anti-double-ping rule/skill is installed; it tells the agent not to notify for automatic done/idle/error events. |
 | **Hook doesn't fire** in Cursor / Claude Code | Re-run `setup` and check `status` shows "config written" for that runtime. Restart the agent app so it reloads `~/.cursor/hooks.json` / `~/.claude/settings.json`. The hooks are merged, never clobbered — your existing hooks are preserved. |
 | **Pushes queue up while offline** then arrive later | Expected. Sends made while the server is unreachable are enqueued to `~/.gocode/outbox/` (size-capped, drop-oldest) and flushed best-effort on the next `send`. A missed "done" ping is acceptable; a blocked agent is not. |
-| **`npx @gocode/notify` can't find the package** | Make sure you're online and using the scoped name exactly: `npx @gocode/notify@latest setup`. Clear a stale npx cache with `npx clear-npx-cache` (or `rm -rf ~/.npm/_npx`) and retry. |
+| **`npx @trygocode/notify` can't find the package** | Make sure you're online and using the scoped name exactly: `npx @trygocode/notify@latest setup`. Clear a stale npx cache with `npx clear-npx-cache` (or `rm -rf ~/.npm/_npx`) and retry. |
 | **Want it gone** | `gocode-notify uninstall` removes exactly the hook/MCP/rule entries this tool added (nothing else). Delete `~/.gocode/` to also drop the stored credentials, and revoke the key from the app's **"Connected agents"** screen. |
 
 **Logs & files.** Failures are appended to `~/.gocode/notify.log` (size-capped,

@@ -41,7 +41,7 @@ test("snippets/ dir is in the package `files` allowlist", () => {
 test("README documents both install paths", () => {
   const readme = read("README.md");
   // Path 1 — terminal one-liner.
-  assert.match(readme, /npx @gocode\/notify@latest setup/);
+  assert.match(readme, /npx @trygocode\/notify@latest setup/);
   // Path 2 — agent-driven prompt.
   assert.match(readme, /--agent-driven --pair-code/);
   // README must reference the test push verification step (Path 2 prompt).

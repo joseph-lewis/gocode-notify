@@ -8,7 +8,7 @@
 //        SubagentStop  → "finished"        (a subagent completed)
 //      Each hook shells out to `gocode-notify send … || true` so a failed push
 //      NEVER blocks the agent's turn (PRD §4.4, §5.3).
-//   2. MERGE an `mcpServers` entry pointing at `npx -y @gocode/notify mcp`.
+//   2. MERGE an `mcpServers` entry pointing at `npx -y @trygocode/notify mcp`.
 //   3. WRITE the on-demand skill to `~/.claude/skills/gocode-notify/SKILL.md`
 //      (the anti-double-ping rule, PRD §5.5).
 //
@@ -42,7 +42,7 @@ export const MCP_SERVER_NAME = "gocode-notify";
 /** The MCP server entry we register (PRD §4.3, §5.4 invocation form). */
 export const MCP_SERVER_ENTRY = {
   command: "npx",
-  args: ["-y", "@gocode/notify", "mcp"],
+  args: ["-y", "@trygocode/notify", "mcp"],
 } as const;
 
 /**

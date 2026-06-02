@@ -33,7 +33,7 @@ function assertSection55Invariants(content: string, hookMention: RegExp): void {
   assert.match(content, /gocode_notify/);
   // Failure/login guidance (with a retry cap so the agent doesn't spam).
   assert.match(content, /gocode_notify_status/);
-  assert.match(content, /npx @gocode\/notify login/);
+  assert.match(content, /npx @trygocode\/notify login/);
   assert.match(content, /Do not retry more than twice/);
 }
 
