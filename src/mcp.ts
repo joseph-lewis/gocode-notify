@@ -57,9 +57,9 @@ export const SERVER_ICONS: { src: string; mimeType: string; sizes: string[] }[] 
     sizes: ["128x128"],
   },
   {
-    src: "https://raw.githubusercontent.com/joseph-lewis/gocode-notify/main/assets/icon.svg",
-    mimeType: "image/svg+xml",
-    sizes: ["any"],
+    src: "https://raw.githubusercontent.com/joseph-lewis/gocode-notify/main/assets/icon-512.png",
+    mimeType: "image/png",
+    sizes: ["512x512"],
   },
 ];
 

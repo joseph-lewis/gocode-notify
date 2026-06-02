@@ -1,4 +1,4 @@
-# gocode-notify — Ralph/Homer loop opt-in snippet  (PRD §5.6, trigger C)
+# gocode-notify — Ralph Wiggum / Autopilot script loop opt-in snippet  (trigger C)
 #
 # OPT-IN. This snippet is NOT auto-injected by `gocode-notify setup`; the
 # installer never edits your loop scripts without consent. Paste these two

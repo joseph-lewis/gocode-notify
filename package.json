@@ -1,7 +1,7 @@
 {
   "name": "@trygocode/notify",
-  "version": "0.1.0",
-  "description": "Free phone notifications for any coding agent (Cursor, Claude Code, OpenCode, Ralph/Homer) via the GoCode app. One npx command installs the hooks + MCP server.",
+  "version": "0.1.1",
+  "description": "Free phone notifications for any coding agent (Cursor, Claude Code, OpenCode, Ralph Wiggum / Autopilot loops) via the free GoCode app. One npx command installs the hooks + MCP server.",
   "license": "MIT",
   "type": "module",
   "homepage": "https://github.com/joseph-lewis/gocode-notify#readme",

@@ -1,17 +1,18 @@
 <p align="center">
-  <img src="assets/icon.svg" alt="GoCode Notify" width="96" height="96" />
+  <img src="assets/icon-512.png" alt="GoCode Notify" width="104" height="104" />
 </p>
 
 <h1 align="center">@trygocode/notify</h1>
 
 <p align="center">
   <strong>Get a push notification on your phone the moment your AI coding agent finishes.</strong><br/>
-  Cursor · Claude Code · OpenCode · Ralph/Homer loops — installed with <em>one</em> command.
+  Cursor · Claude Code · OpenCode · Ralph Wiggum / Autopilot script loops — installed with <em>one</em> command.
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@trygocode/notify"><img alt="npm" src="https://img.shields.io/npm/v/@trygocode/notify?color=5EE6A8&label=npm"></a>
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <img alt="price" src="https://img.shields.io/badge/price-free-5EE6A8">
   <img alt="node" src="https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white">
   <img alt="works with" src="https://img.shields.io/badge/works%20with-Cursor%20%C2%B7%20Claude%20Code%20%C2%B7%20OpenCode-111">
 </p>
@@ -21,9 +22,15 @@ npx @trygocode/notify@latest setup
 ```
 
 <p align="center">
-  <!-- Joseph: drop a 2-3s screen recording of the phone notification arriving here. -->
-  <img src="assets/demo.gif" alt="A push notification arrives on the phone the instant the agent finishes" width="320" />
+  <img src="assets/banner.png" alt="GoCode Notify" width="640" />
 </p>
+
+> **Free.** `@trygocode/notify` and the **[GoCode](https://oh.jeltechsolutions.com)** phone app
+> that receives the pushes are both free to use.
+>
+> **You need the GoCode app.** Notifications are delivered to your phone through the free GoCode
+> app — it's the pairing target and the thing your phone buzzes with. Install it, pair once
+> (a 6-digit code), done. Without it there's nowhere for the pushes to land.
 
 ---
 
@@ -38,6 +45,7 @@ you didn't notice.
 idle waiting for you, errors out, or an overnight loop completes/halts.** Walk
 away. Your phone tells you when it needs you.
 
+- 🆓 **Free.** The package and the GoCode phone app are free. No card, no trial.
 - ⚡ **One command.** `npx @trygocode/notify@latest setup` — no server to host, no config files to hand-edit.
 - 🔒 **Push-only & private.** The paired key can *only* send notifications to your phone. It can't read your chats, code, or settings. Revoke it any time.
 - 🧩 **Auto-detects your tools.** Wires up Cursor, Claude Code, and OpenCode in one go — never clobbering your existing hooks/MCP config.
@@ -50,17 +58,19 @@ away. Your phone tells you when it needs you.
 | **Cursor** | `stop` hook |
 | **Claude Code** | `Stop` + `Notification` + `SubagentStop` hooks |
 | **OpenCode** | runtime hook |
-| **Ralph / Homer loops** | opt-in completion/halt snippet |
+| **Ralph Wiggum / Autopilot script loops** | opt-in completion/halt snippet |
 
-> Notifications are delivered through the free **[GoCode](https://oh.jeltechsolutions.com)**
-> phone app (the one-time pairing target). Install GoCode, pair once, done.
+> **Requires the free [GoCode](https://oh.jeltechsolutions.com) phone app.** It's the one-time
+> pairing target and where every push lands. Install GoCode, pair once, done — both the app and
+> this package are free.
 
 ## Contents
 
 - [Install — two equally-supported paths](#install--two-equally-supported-paths)
 - [Pairing — step by step](#pairing--step-by-step)
 - [The three triggers](#the-three-triggers)
-- [Ralph/Homer opt-in snippet (trigger C)](#ralphhomer-opt-in-snippet-trigger-c)
+- [Loop opt-in snippet (trigger C)](#loop-opt-in-snippet-trigger-c)
+- [GoCode platform settings (auto-push, pull-before-push & more)](#gocode-platform-settings)
 - [Troubleshooting](#troubleshooting)
 - [Develop](#develop)
 - [Layout](#layout)
@@ -155,17 +165,18 @@ or staging GoCode server.
 |---|---|---|
 | **(A) Runtime hook** | Cursor `stop` / Claude Code `Stop`+`Notification`+`SubagentStop` | Agent finishes a turn, goes idle, or errors — **automatic, the killer feature** |
 | **(B) MCP tool** | `gocode_notify` tool the agent calls | You *explicitly* ask "ping me when X is done" mid-task |
-| **(C) Loop shell hook** | one line in your loop's completion/halt path | A Ralph/Homer loop reaches `completed` / `halted` |
+| **(C) Loop shell hook** | one line in your loop's completion/halt path | A Ralph Wiggum / Autopilot script loop reaches `completed` / `halted` |
 
 The installed rule/skill tells the agent **not** to call the MCP tool for
 done/idle/error pings — those are owned by the deterministic hook (A), so you
 never get double-pinged.
 
-## Ralph/Homer opt-in snippet (trigger C)
+## Loop opt-in snippet (trigger C)
 
-For power users running a loop **they control** (this repo's `ralph`/`homer`
-skills, a `while :; do … done` one-liner, or any custom driver), drop these two
-lines into the loop's completion/halt path:
+For power users running an autonomous loop **they control** — a *Ralph Wiggum*-style
+"keep prompting until done" loop, an Autopilot script, a `while :; do … done`
+one-liner, or any custom driver — drop these two lines into the loop's
+completion/halt path:
 
 ```bash
 # At loop completion:
@@ -181,6 +192,24 @@ The ready-to-copy version with comments lives at
 **This is opt-in and never auto-injected** — the installer does not edit your
 loop scripts. Both lines are fire-and-forget (`|| true` + the CLI's 5s
 self-timeout), so a failed or slow push can never block or fail your loop.
+
+## GoCode platform settings
+
+This package is the *notifier*. The richer automation lives in the free **GoCode**
+phone app (Settings → per-project + global), which uses these notifications as its
+signalling layer. Once paired, the app gives you:
+
+| Setting | What it does |
+|---|---|
+| **Notification preferences** | Choose which events ping your phone — done / idle / error, loop completed, loop halted, agent questions, merge-ready — globally or per project. |
+| **Auto-push to git** | Opt-in: after a turn, the agent commits + pushes to a chosen branch so your work is never stranded on one machine and you can pick up anywhere. Off by default. |
+| **Pull-before-push (safe)** | When auto-push is on, a `git pull --rebase --autostash` runs first so remote changes merge cleanly. On a real conflict it aborts safely (nothing lost) and pings your phone. |
+| **AI-Solve conflicts** | If a push hits a conflict, the notification deep-links into the chat with two actions: **Acknowledge** or **AI-Solve** — your agent diagnoses local vs remote and resolves it with no code loss, asking you only when it's unsure. |
+| **Review & merge / Create PR** | When an Autopilot loop finishes on its own branch, you get a merge-ready ping; choose **Merge & push** (solo repos) or **Create PR** (teams), with a remembered default branch. |
+| **Default LLM & loop model** | Per-project defaults for the agent model and the Autopilot loop model. |
+
+> These toggles are configured **in the GoCode app**, not in this npm package — the
+> package just delivers the pings that drive them. All of it is free.
 
 ## Troubleshooting
 

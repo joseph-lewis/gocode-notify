@@ -3,6 +3,19 @@
 All notable changes to `@trygocode/notify` are documented here. This project
 follows [Semantic Versioning](https://semver.org).
 
+## [0.1.1] — 2026-06-03
+
+### Changed
+- **Real GoCode artwork** — replaced placeholder mark with the official GoCode
+  Notify icon (`icon-512.png` / `icon-128.png`) and a README hero banner. MCP
+  server `icons` metadata now points at the real PNGs.
+- **Clearer docs** — the free GoCode phone app is now called out up front as a
+  required component, the "free" status is stated explicitly, and a new
+  **GoCode platform settings** section documents auto-push, safe pull-before-push,
+  AI-Solve conflict resolution, and review-&-merge.
+- Renamed "Ralph / Homer loops" to "Ralph Wiggum / Autopilot script loops"
+  throughout for readers unfamiliar with the internal codenames.
+
 ## [0.1.0] — 2026-06-03
 
 Initial public release.
@@ -26,4 +39,5 @@ Initial public release.
 - **MCP server metadata** — `icons` + `websiteUrl` (SEP-973) so compatible clients
   can show the GoCode mark next to the server.
 
+[0.1.1]: https://github.com/joseph-lewis/gocode-notify/releases/tag/v0.1.1
 [0.1.0]: https://github.com/joseph-lewis/gocode-notify/releases/tag/v0.1.0

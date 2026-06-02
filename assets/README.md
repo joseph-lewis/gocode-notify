@@ -4,13 +4,10 @@ Brand assets for **GoCode Notify**.
 
 | File | Used by |
 |---|---|
-| `icon.svg` | MCP server icon metadata (`mimeType: image/svg+xml`, scalable), README, social. |
-| `icon-128.png` | MCP server icon metadata (`128x128`). |
-| `demo.gif` | README hero — the phone notification arriving when an agent finishes. |
-| `logo.png` | GitHub social preview / npm. |
+| `icon-512.png` | Primary GoCode Notify mark (512×512). README header + MCP server icon metadata. |
+| `icon-128.png` | MCP server icon metadata (128×128). |
+| `icon.svg` | Scalable fallback mark. |
+| `banner.png` | README hero banner (1280×320). |
 
-> **Joseph:** drop the real GoCode logo PNG/SVG and a 2-second demo GIF in here
-> (replace the placeholders). Keep filenames identical so the MCP icon URLs and
-> README image links keep resolving. Recommended: `icon.svg` (square, transparent),
-> `icon-128.png` (128×128), `demo.gif` (≤ 3s, ≤ 5 MB), `logo.png` (1280×640 for the
-> GitHub social card).
+All marks are the official GoCode logo. Keep filenames identical so the MCP icon
+URLs (served over GitHub's raw CDN) and README image links keep resolving.
