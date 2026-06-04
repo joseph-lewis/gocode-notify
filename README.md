@@ -180,9 +180,9 @@ completion/halt path:
 
 ```bash
 # At loop completion:
-gocode-notify send --kind loop_completed --source ralph --project "$(basename "$PWD")" || true
+npx -y @trygocode/notify send --kind loop_completed --source ralph --project "$(basename "$PWD")" || true
 # At loop halt (paused_max_failures / awaiting_human):
-gocode-notify send --kind loop_halted --source ralph --project "$(basename "$PWD")" \
+npx -y @trygocode/notify send --kind loop_halted --source ralph --project "$(basename "$PWD")" \
   --title "Ralph halted — needs you" || true
 ```
 

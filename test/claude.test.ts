@@ -53,7 +53,7 @@ function ourGroupCount(arr: unknown[]): number {
       g.hooks.some(
         (h: any) =>
           typeof h?.command === "string" &&
-          h.command.includes("gocode-notify") &&
+          h.command.includes("notify send") &&
           h.command.includes("--source claude_code"),
       ),
   ).length;

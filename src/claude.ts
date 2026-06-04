@@ -52,19 +52,23 @@ export const MCP_SERVER_ENTRY = {
  * (e.g. Cursor `stop` + Claude `Stop`) coalesce server-side.
  */
 export const CLAUDE_HOOK_COMMANDS: Readonly<Record<string, string>> = {
-  Stop: 'gocode-notify send --kind finished --source claude_code --dedupe-key "$CLAUDE_SESSION_ID-stop" || true',
+  Stop: 'npx -y @trygocode/notify send --kind finished --source claude_code --dedupe-key "$CLAUDE_SESSION_ID-stop" || true',
   Notification:
-    'gocode-notify send --kind awaiting_input --source claude_code --title "Agent needs you" --dedupe-key "$CLAUDE_SESSION_ID-notify" || true',
+    'npx -y @trygocode/notify send --kind awaiting_input --source claude_code --title "Agent needs you" --dedupe-key "$CLAUDE_SESSION_ID-notify" || true',
   SubagentStop:
-    'gocode-notify send --kind finished --source claude_code --title "Subagent done" --dedupe-key "$CLAUDE_SESSION_ID-subagent" || true',
+    'npx -y @trygocode/notify send --kind finished --source claude_code --title "Subagent done" --dedupe-key "$CLAUDE_SESSION_ID-subagent" || true',
 };
 
 /**
  * Substrings that together identify a hook command as OURS. Used for idempotent
  * merge (replace, don't duplicate) and for surgical uninstall (remove exactly
  * ours). A command must contain BOTH to be considered ours.
+ *
+ * `notify send` matches BOTH the current `npx -y @trygocode/notify send …`
+ * form AND the legacy bare `gocode-notify send …` form, so upgrading from an
+ * older install is detected and cleanly replaced rather than duplicated.
  */
-const HOOK_MARKERS = ["gocode-notify", "--source claude_code"] as const;
+const HOOK_MARKERS = ["notify send", "--source claude_code"] as const;
 
 /**
  * The on-demand skill written to `~/.claude/skills/gocode-notify/SKILL.md`

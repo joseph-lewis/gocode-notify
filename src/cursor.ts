@@ -53,14 +53,18 @@ export const MCP_SERVER_ENTRY = {
  * coalesce server-side.
  */
 export const CURSOR_STOP_COMMAND =
-  "gocode-notify send --kind finished --source cursor --dedupe-key cursor-stop || true";
+  "npx -y @trygocode/notify send --kind finished --source cursor --dedupe-key cursor-stop || true";
 
 /**
  * Substrings that together identify a `stop` hook entry as OURS. Used for
  * idempotent merge (replace, don't duplicate) and for surgical uninstall (remove
  * exactly ours). A command must contain BOTH to be considered ours.
+ *
+ * `notify send` matches BOTH the current `npx -y @trygocode/notify send …`
+ * form AND the legacy bare `gocode-notify send …` form, so an upgrade from an
+ * older install is detected and cleanly replaced rather than duplicated.
  */
-const HOOK_MARKERS = ["gocode-notify", "--source cursor"] as const;
+const HOOK_MARKERS = ["notify send", "--source cursor"] as const;
 
 /**
  * The on-demand rule written to `~/.cursor/rules/gocode-notify.md` (PRD §5.5).

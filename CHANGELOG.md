@@ -3,6 +3,22 @@
 All notable changes to `@trygocode/notify` are documented here. This project
 follows [Semantic Versioning](https://semver.org).
 
+## [0.1.2] — 2026-06-04
+
+### Fixed
+- **Hooks now work without a global install.** The Cursor `stop` hook and the
+  Claude Code `Stop`/`Notification`/`SubagentStop` hooks (and the Ralph/Homer
+  loop snippet) shelled out to a bare `gocode-notify send …`, which only
+  resolves when the package is installed globally on `PATH`. After an
+  `npx @trygocode/notify setup` (the documented flow) the binary was NOT on
+  `PATH`, so every hook silently failed (the `|| true` guard hid it) and no
+  phone notification was ever sent on agent completion. The hooks now invoke
+  `npx -y @trygocode/notify send …`, matching the MCP entry's invocation form,
+  so they work out of the box with zero global footprint. The idempotent
+  merge/uninstall markers were widened to `notify send` so they detect and
+  cleanly replace BOTH the new form and any legacy bare-command hook from an
+  older install.
+
 ## [0.1.1] — 2026-06-03
 
 ### Changed

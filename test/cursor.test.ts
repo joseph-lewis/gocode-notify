@@ -52,7 +52,7 @@ function ourStopCount(arr: unknown[]): number {
   return arr.filter(
     (h: any) =>
       typeof h?.command === "string" &&
-      h.command.includes("gocode-notify") &&
+      h.command.includes("notify send") &&
       h.command.includes("--source cursor"),
   ).length;
 }

@@ -15,7 +15,7 @@ test("Ralph/Homer snippet ships as a shell file with both loop kinds", () => {
   // fire-and-forget: both sends must be non-blocking.
   const sendLines = snippet
     .split("\n")
-    .filter((l) => l.includes("gocode-notify send"));
+    .filter((l) => l.includes("notify send"));
   assert.equal(sendLines.length, 2, "exactly two send lines");
   for (const l of sendLines) {
     assert.ok(l.includes("--source ralph"), `source tag on: ${l}`);

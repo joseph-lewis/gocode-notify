@@ -14,8 +14,8 @@
 # can never block or fail your loop (the CLI also self-times-out in 5s).
 
 # --- At loop completion (the loop finished all work cleanly) -----------------
-gocode-notify send --kind loop_completed --source ralph --project "$(basename "$PWD")" || true
+npx -y @trygocode/notify send --kind loop_completed --source ralph --project "$(basename "$PWD")" || true
 
 # --- At loop halt (paused_max_failures / awaiting_human / question raised) ---
-gocode-notify send --kind loop_halted --source ralph --project "$(basename "$PWD")" \
+npx -y @trygocode/notify send --kind loop_halted --source ralph --project "$(basename "$PWD")" \
   --title "Ralph halted — needs you" || true
